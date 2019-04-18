@@ -28,11 +28,7 @@ const url = 'https://www.nationalgeographic.com/photography/photo-of-the-day/'
   })
 
   let photoText = await page.evaluate(() => {
-    var p = document.getElementsByTagName('p')[0]
-    if (p.getElementsByTagName('b').length) {
-      p.getElementsByTagName('b')[0].remove()
-    }
-    return p.textContent
+    return document.querySelector('span[itemprop="caption"]>p').textContent
   })
 
   if (imageUrl) {
